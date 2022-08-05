@@ -1,1 +1,49 @@
 # symfony_realnote
+
+##**Entités**
+
+- Album :
+    - name : string
+    - release_date : date
+    - artists : relation ( Artist )
+    - titles : relation ( Title )
+    - cover : relation ( Cover )
+    - category : relation ( Category )
+- Artist : 
+    - name : string 
+    - real_name : string 
+    - birth_date : date 
+    - summary : string
+    - photo : relation ( Photo )
+    - albums : relation ( Album )
+    - features : relation ( Title )
+- Title : 
+    - name : string 
+    - album : relation ( Album )
+- Cover : 
+    - name : string 
+- Photo : 
+    - name : string 
+- Category : 
+    - name : string 
+    - albums : relation ( Album )
+- User : 
+    - login : string 
+    - password : string 
+    - roles : json_format
+    - user_albums : relation ( UserAlbum )
+- UserAlbum :
+    - name : string 
+    - artists_name : string 
+    - note : integer / double 
+    - user_titles : relation ( UserTitle )
+    - cover : relation ( Cover )
+- UserTitle : 
+    - name : string 
+    - feats : relation ( Feat )
+    - note_feat : string 
+    - note_lyrics : string 
+    - note_beat : string 
+    - note_flow : string 
+- Feat : 
+    - name : string 
