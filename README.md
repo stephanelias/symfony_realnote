@@ -11,12 +11,12 @@
     - category : relation ( Category )
 - Artist : 
     - name : string 
-    - real_name : string 
-    - birth_date : date 
-    - summary : string
-    - photo : relation ( Photo )
-    - albums : relation ( Album )
-    - features : relation ( Title )
+    - real_name : string : null 
+    - birth_date : date : null 
+    - summary : string : null 
+    - photo : relation ( Photo ) : null 
+    - albums : relation ( Album ) : null 
+    - features : relation ( Title ) : null 
 - Title : 
     - name : string 
     - album : relation ( Album )
