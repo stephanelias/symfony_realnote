@@ -18,7 +18,7 @@
     - albums : relation ( Album ) : null 
     - features : relation ( Title ) : null 
 - Title : 
-    - name : string 
+    - name : string
     - album : relation ( Album )
 - Cover : 
     - name : string 
