@@ -6,6 +6,7 @@ use App\Entity\Artist;
 use App\Entity\Photo;
 use App\Form\ArtistType;
 use App\Repository\ArtistRepository;
+use App\Repository\PhotoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -81,6 +82,7 @@ class ArtistController extends AbstractController
             if ($photo !== null ) {
                 if ($artist->getPhoto() !== null ) {
                     unlink($this->getParameter('images_directory').'/'.$artist->getPhoto()->getName());
+                    $artist->setPhoto(null) ;
                 }
                 $file_name = md5(uniqid()).'.'.$photo->guessExtension() ;
                 $photo->move(
@@ -108,6 +110,9 @@ class ArtistController extends AbstractController
     public function delete(Request $request, Artist $artist, ArtistRepository $artistRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$artist->getId(), $request->request->get('_token'))) {
+            if ($artist->getPhoto() !== null ) {
+                unlink($this->getParameter('images_directory').'/'.$artist->getPhoto()->getName());
+            }
             $artistRepository->remove($artist, true);
         }
 

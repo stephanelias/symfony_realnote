@@ -15,16 +15,24 @@
                     {% else %}
                         <img src="{{ asset('/uploads/'~artist.photo.name) }}" class="img-thumbnail" alt="...">
                     {% endif %}
-                    <h5 class="card-title">Vrai nom</h5>
-                    <p class="card-text">Biographie</p>
+                    <h5 class="card-title">{{ artist.realName }}</h5>
+                    <p class="card-text">{{ artist.summary }}</p>
                     <a class="btn btn-dark" href="{{ path('app_artist_index') }}">Retour</a>
                     <a class="btn btn-success" href="{{ path('app_artist_edit', {'id': artist.id}) }}">Modifier</a>
                     {{ include('artist/_delete_form.html.twig') }}
                 </div>
                 <div class="card-footer text-muted">
-                    Date de naissance
+                    {{ artist.birthDate|date("m/d/Y") }}
                 </div>
             </div>
+        </div>
+
+        <div class="part">
+            Album(s) de {{ artist.name }}
+        </div>
+
+        <div class="part">
+            Apparition(s) de {{ artist.name }}
         </div>
     </div>
 

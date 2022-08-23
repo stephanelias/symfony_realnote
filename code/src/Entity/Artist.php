@@ -27,6 +27,21 @@ class Artist
      */
     private $photo;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $real_name;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $birth_date;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $summary;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +67,42 @@ class Artist
     public function setPhoto(?Photo $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getRealName(): ?string
+    {
+        return $this->real_name;
+    }
+
+    public function setRealName(?string $real_name): self
+    {
+        $this->real_name = $real_name;
+
+        return $this;
+    }
+
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birth_date;
+    }
+
+    public function setBirthDate(?\DateTimeInterface $birth_date): self
+    {
+        $this->birth_date = $birth_date;
+
+        return $this;
+    }
+
+    public function getSummary(): ?string
+    {
+        return $this->summary;
+    }
+
+    public function setSummary(?string $summary): self
+    {
+        $this->summary = $summary;
 
         return $this;
     }
