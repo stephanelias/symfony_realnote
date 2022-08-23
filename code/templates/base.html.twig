@@ -31,7 +31,7 @@
                         <a class="nav-link" href="#">Albums</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Artistes</a>
+                        <a class="nav-link" href="{{ path("app_artist_index") }}">Artistes</a>
                     </li>
                 </ul>
                 {% if app.user %}
@@ -50,3 +50,10 @@
         {% block body %}{% endblock %}
     </body>
 </html>
+
+<style>
+    .part {
+        margin-bottom: 15px ;
+        margin-top: 15px;
+    }
+</style>

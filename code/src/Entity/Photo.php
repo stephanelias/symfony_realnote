@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ArtistRepository;
+use App\Repository\PhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ArtistRepository::class)
+ * @ORM\Entity(repositoryClass=PhotoRepository::class)
  */
-class Artist
+class Photo
 {
     /**
      * @ORM\Id
@@ -21,11 +21,6 @@ class Artist
      * @ORM\Column(type="string", length=255)
      */
     private $name;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Photo::class, cascade={"persist", "remove"})
-     */
-    private $photo;
 
     public function getId(): ?int
     {
@@ -43,17 +38,4 @@ class Artist
 
         return $this;
     }
-
-    public function getPhoto(): ?Photo
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(?Photo $photo): self
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
 }

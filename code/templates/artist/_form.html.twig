@@ -1,0 +1,5 @@
+{{ form_start(form) }}
+    {{ form_row(form.name, { 'label': 'Nom de scène' }) }}
+    {{ form_row(form.photo) }}
+    <button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}
