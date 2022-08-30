@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer album{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="part">
+            <h1>Éditer un album</h1>
+
+            {{ include('album/_form.html.twig', {'button_label': 'Update'}) }}
+
+            <a class="btn btn-dark" href="{{ path('app_album_index') }}">Retour</a>
+
+            {{ include('album/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

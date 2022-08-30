@@ -4,11 +4,11 @@
 
 - Album :
     - name : string
-    - release_date : date
-    - artists : relation ( Artist )
-    - titles : relation ( Title )
-    - cover : relation ( Cover )
-    - category : relation ( Category )
+    - release_date : date : null 
+    - artists : relation ( Artist ) : null
+    - titles : relation ( Title ) : null
+    - cover : relation ( Cover ) : null
+    - category : relation ( Category ) : null
 - Artist : 
     - name : string 
     - real_name : string : null 
@@ -20,30 +20,31 @@
 - Title : 
     - name : string
     - album : relation ( Album )
+    - feats : relation ( Artist ) : null
 - Cover : 
     - name : string 
 - Photo : 
     - name : string 
 - Category : 
     - name : string 
-    - albums : relation ( Album )
+    - albums : relation ( Album ) : null
 - User : 
     - login : string 
     - password : string 
     - roles : json_format
-    - user_albums : relation ( UserAlbum )
+    - user_albums : relation ( UserAlbum ) : null
 - UserAlbum :
     - name : string 
     - artists_name : string 
-    - note : integer / double 
-    - user_titles : relation ( UserTitle )
+    - note : integer / double : null
+    - user_titles : relation ( UserTitle ) : null
     - cover : relation ( Cover )
 - UserTitle : 
     - name : string 
-    - feats : relation ( Feat )
-    - note_feat : string 
-    - note_lyrics : string 
-    - note_beat : string 
-    - note_flow : string 
+    - feats : relation ( Feat ) : null
+    - note_feat : string : null
+    - note_lyrics : string : null
+    - note_beat : string : null
+    - note_flow : string : null
 - Feat : 
     - name : string 

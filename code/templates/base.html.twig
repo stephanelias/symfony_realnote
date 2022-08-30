@@ -28,7 +28,7 @@
                         <a class="nav-link" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Albums</a>
+                        <a class="nav-link" href="{{ path("app_album_index") }}">Albums</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path("app_artist_index") }}">Artistes</a>
@@ -57,3 +57,33 @@
         margin-top: 15px;
     }
 </style>
+
+<script>
+    const newItem = (e) => {
+        const collectionHolder = document.querySelector(e.currentTarget.dataset.collection);
+
+        const item = document.createElement("div");
+        item.classList.add("col-4");
+        item.innerHTML = collectionHolder
+            .dataset
+            .prototype
+            .replace(
+                /__name__/g,
+                collectionHolder.dataset.index
+            );
+
+        item.querySelector(".btn-remove").addEventListener("click", () => item.remove());
+
+        collectionHolder.appendChild(item);
+
+        collectionHolder.dataset.index++;
+    };
+
+    document
+        .querySelectorAll('.btn-remove')
+        .forEach(btn => btn.addEventListener("click", (e) => e.currentTarget.closest(".col-4").remove()));
+
+    document
+        .querySelectorAll('.btn-new')
+        .forEach(btn => btn.addEventListener("click", newItem));
+</script>

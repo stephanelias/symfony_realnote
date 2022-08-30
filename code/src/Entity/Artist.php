@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArtistRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,16 @@ class Artist
      * @ORM\Column(type="text", nullable=true)
      */
     private $summary;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Album::class, inversedBy="artists")
+     */
+    private $albums;
+
+    public function __construct()
+    {
+        $this->albums = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +115,30 @@ class Artist
     public function setSummary(?string $summary): self
     {
         $this->summary = $summary;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Album>
+     */
+    public function getAlbums(): Collection
+    {
+        return $this->albums;
+    }
+
+    public function addAlbum(Album $album): self
+    {
+        if (!$this->albums->contains($album)) {
+            $this->albums[] = $album;
+        }
+
+        return $this;
+    }
+
+    public function removeAlbum(Album $album): self
+    {
+        $this->albums->removeElement($album);
 
         return $this;
     }
